@@ -1,0 +1,12 @@
+.field {
+	background-color: #D39799;
+	width: 150px;
+	height: 100px;
+}
+
+.goal {
+	background-color: black;
+	color: white;
+	width: 100px;
+	height: 100px;
+}

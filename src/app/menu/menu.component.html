@@ -1,0 +1,43 @@
+<div id="background" class="d-flex algin-items-center">
+	<div id="menu" class="container border rounded">
+
+		<div class="d-flex justify-content-center my-3">
+			<img src="../../assets/logo.png" alt="">
+		</div>
+
+		<form #menu class="mb-2">
+			<p>¡Bienvenido a Matematletas, pon a prueba tus habilidades logico-matematicas, con este divertido juego!</p>
+			<div class="form-group">
+				<label for="numberOfPlayers">Cantidad de jugadores</label>
+				<input type="number" min="1" max="8" name="numberOfPlayers" class="form-control"
+					[(ngModel)]="numberOfPlayers" #txtNumberOfPlayers="ngModel" required
+					(ngModelChange)="validateNumberOfPlayers()">
+			</div>
+
+
+			<div *ngIf="(txtNumberOfPlayers.invalid && (txtNumberOfPlayers.dirty || txtNumberOfPlayers.touched)) || !validNumberOfPlayers"
+				class="alert alert-danger">
+
+				<div *ngIf="txtNumberOfPlayers.errors?.required">
+					Se requiere especificar un número de jugadores.
+				</div>
+
+				<div *ngIf="!validNumberOfPlayers">
+					Solo pueden haber de 1 a 8 jugadores.
+				</div>
+			</div>
+
+			<div class="d-grid gap-2">
+				<ng-container *ngIf="validNumberOfPlayers">
+					<button 
+					class="btn btn-primary" 
+					type="button"
+					(click)="onStartClick()">
+					Iniciar la partida
+				</button>
+				</ng-container>
+				
+			</div>
+		</form>
+	</div>
+</div>

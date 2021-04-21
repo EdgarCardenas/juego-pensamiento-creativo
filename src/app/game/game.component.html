@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <img src="../../assets/logo.png" class="my-5">
+</div>
+<ng-container *ngIf="!isGameOver">
+  <div class="container">
+    <div class="d-grid gap-2">
+      <button class="btn btn-success" (click)="showModal()">Siguiente pregunta</button>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="d-flex justify-content-center">
+      <h1 [ngStyle]="{'color': messageColor}">{{message}}</h1>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-center my-3">
+    <app-scoreboard [players]="players"></app-scoreboard>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isGameOver">
+
+  <div class="d-flex justify-content-center">
+    
+      <table>
+        <tr *ngFor="let winner of winners">
+          <td>
+            <span class="winner-message">El jugador {{winner+1}} gano!</span>
+          </td>
+        </tr>
+      </table>
+  </div>
+
+</ng-container>
